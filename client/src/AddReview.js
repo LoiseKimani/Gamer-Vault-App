@@ -13,7 +13,7 @@ function AddReview() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:4000/reviews', {
+    fetch('http://localhost:3000/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

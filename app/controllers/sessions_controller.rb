@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def create
       user = User.find_by(email: params[:email])
-  
+puts "*****"
+puts user.username
+puts "*****"
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         render json: { message: "Logged in successfully" }, status: :ok

@@ -13,7 +13,6 @@ class GameReviewsController < ApplicationController
   
     def create
       game_review = GameReview.new(game_review_params)
-      game_review.user_id = session[:user_id]
       
       if game_review.save
         render json: game_review, status: :created
@@ -41,7 +40,7 @@ class GameReviewsController < ApplicationController
     end
   
     def game_review_params
-      params.require(:game_review).permit(:name, :rating, :comment, :game_id)
+      params.permit(:name, :rating, :comment, :game_id)
     end
   
     def require_login
