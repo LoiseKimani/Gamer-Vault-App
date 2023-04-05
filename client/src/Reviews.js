@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const ViewReviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch('/gamereviews');
+        const response = await fetch('/game_reviews');
         const data = await response.json();
         setReviews(data);
       } catch (error) {
@@ -31,4 +31,4 @@ const ViewReviews = () => {
   );
 };
 
-export default ViewReviews;
+export default Reviews;

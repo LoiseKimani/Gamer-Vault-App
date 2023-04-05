@@ -5,20 +5,20 @@ import Home from './Home'
 import Reviews from './Reviews'
 import Login from './Login'
 import SignUp from './SignUp'
-import Navbar from './NavBar'
+import NavBar from './NavBar'
 
 const App = () => {
   
   return (
     <>
       <BrowserRouter>
-      <Navbar />
+        <NavBar />
         <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/reviews' element={<Reviews />} />
-        <Route path='/addreview' element={<AddReview />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/reviews' element={<Reviews />} />
+          <Route path='/add_review' element={<AddReview />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </>

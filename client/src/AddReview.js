@@ -19,7 +19,7 @@ const AddReview = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/gamereviews', {
+      const response = await fetch('http://localhost:3000/game_reviews/add_reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
