@@ -1,9 +1,10 @@
-<!-- # Project Template: React/Rails API
+# Project Template: React/Rails API
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Render.
+This app allows you to search, post and view reviews of your favorite
+        games. Whether you're a casual gamer or a hardcore enthusiast, you'll
+        find plenty of helpful information and insights here.
 
 **Note**: if you are not planning to deploy your app to Render and prefer to use
 SQLite, you will need to make the following changes in the project files:
