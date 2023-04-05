@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-function Reviews() {
+const ViewReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/reviews')
-      .then(response => response.json())
-      .then(data => setReviews(data))
-      .catch(error => console.log(error));
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch('/gamereviews');
+        const data = await response.json();
+        setReviews(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchReviews();
   }, []);
 
   return (
     <div>
-      <h2>Reviews</h2>
-      {reviews.map(review => (
-        <div key={review.id}>
-          {review.image && <img src={review.image} alt={review.name} />}
-          <h3>{review.name}</h3>
-          <p>Rating: {review.rating}</p>
-          <p>{review.comment}</p>
-        </div>
-      ))}
+      <h1>Reviews</h1>
+      <ul>
+        {reviews.map((review) => (
+          <li key={review.id}>
+            <h3>{review.name}</h3>
+            <p>{review.comment}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
-export default Reviews;
+export default ViewReviews;

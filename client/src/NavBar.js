@@ -1,42 +1,22 @@
-import { Link } from "react-router-dom";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function NavBar({ user, onLogout }) {
+function Navbar() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={Link} to="/">
-        My App
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">
-            Home
-          </Nav.Link>
-          {user && (
-            <>
-              <Nav.Link as={Link} to="/reviews">
-                Reviews
-              </Nav.Link>
-              <Nav.Link as={Link} to="/form">
-                Form
-              </Nav.Link>
-            </>
-          )}
-        </Nav>
-        {user ? (
-          <Button variant="outline-success" onClick={onLogout}>
-            Logout
-          </Button>
-        ) : (
-          <Nav.Link as={Link} to="/login">
-            Login
-          </Nav.Link>
-        )}
-      </Navbar.Collapse>
-    </Navbar>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/add-reviews">Add Reviews</Link>
+        </li>
+        <li>
+          <Link to="/reviews">Reviews</Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
 
-export default NavBar;
-
+export default Navbar;

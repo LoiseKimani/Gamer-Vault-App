@@ -5,12 +5,14 @@ import Home from './Home'
 import Reviews from './Reviews'
 import Login from './Login'
 import SignUp from './SignUp'
+import Navbar from './NavBar'
 
 const App = () => {
   
   return (
     <>
       <BrowserRouter>
+      <Navbar />
         <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/reviews' element={<Reviews />} />

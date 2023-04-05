@@ -1,42 +1,58 @@
 import React, { useState } from 'react';
 
-function AddReview() {
+const AddReview = () => {
   const [formData, setFormData] = useState({
+    image: '',
     name: '',
     rating: '',
     comment: ''
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch('http://localhost:3000/reviews', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-        setFormData({
-          name: '',
-          rating: '',
-          comment: ''
-        });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
+    try {
+      const response = await fetch('/gamereviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
+      const data = await response.json();
+      console.log(data);
+      setFormData({
+        image: '',
+        name: '',
+        rating: '',
+        comment: ''
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <div>
+      <h1>Post a Review</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="image">Image URL:</label>
+        <input
+          type="text"
+          id="image"
+          name="image"
+          value={formData.image}
+          onChange={handleChange}
+          required
+        />
+
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -44,9 +60,9 @@ function AddReview() {
           name="name"
           value={formData.name}
           onChange={handleChange}
+          required
         />
-      </div>
-      <div>
+
         <label htmlFor="rating">Rating:</label>
         <input
           type="number"
@@ -54,20 +70,22 @@ function AddReview() {
           name="rating"
           value={formData.rating}
           onChange={handleChange}
+          required
         />
-      </div>
-      <div>
+
         <label htmlFor="comment">Comment:</label>
         <textarea
           id="comment"
           name="comment"
           value={formData.comment}
           onChange={handleChange}
-        ></textarea>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+          required
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
-}
+};
 
 export default AddReview;
