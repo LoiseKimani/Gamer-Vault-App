@@ -1,4 +1,7 @@
-# Project Template: React/Rails API
+# GAMER VAULT APP Template: React/Rails API
+
+
+I only used one file for the backend and frontend.
 
 ## Description
 
@@ -73,6 +76,17 @@ You can use the following commands to run the application:
 - `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
 - `npm start --prefix client`: run the frontend on
   [http://localhost:4000](http://localhost:4000)
+
+
+## DEPLOYMENT
+
+                                           │
+   │   Serving!                                  │
+   │                                             │
+   │   - Local:    http://localhost:3000         │
+   │   - Network:  http://192.168.115.145:3000   │
+   │                                             │
+   │   Copied local address to clipboard!       
 
 
 ## Development
